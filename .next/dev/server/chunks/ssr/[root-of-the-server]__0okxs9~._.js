@@ -636,6 +636,14 @@ const AI_TOOLS = [
                     'Custom deployment',
                     'SSO'
                 ]
+            },
+            {
+                name: 'API Direct',
+                monthlyPrice: 0,
+                features: [
+                    'Pay-as-you-go',
+                    'GPT-4'
+                ]
             }
         ],
         alternatives: [
@@ -673,6 +681,14 @@ const AI_TOOLS = [
                 ]
             },
             {
+                name: 'Max',
+                monthlyPrice: 30,
+                features: [
+                    'Claude 3 Opus Max',
+                    'Extended context'
+                ]
+            },
+            {
                 name: 'Team',
                 monthlyPrice: 30,
                 features: [
@@ -686,12 +702,20 @@ const AI_TOOLS = [
                 features: [
                     'Custom deployment'
                 ]
+            },
+            {
+                name: 'API Direct',
+                monthlyPrice: 0,
+                features: [
+                    'Pay-as-you-go',
+                    'Claude 3'
+                ]
             }
         ]
     },
     {
         id: 'gemini',
-        name: 'Google Gemini',
+        name: 'Gemini',
         category: 'llm',
         plans: [
             {
@@ -703,11 +727,27 @@ const AI_TOOLS = [
                 ]
             },
             {
-                name: 'Advanced',
+                name: 'Pro',
                 monthlyPrice: 20,
                 features: [
+                    'Gemini Pro',
+                    'Higher limits'
+                ]
+            },
+            {
+                name: 'Ultra',
+                monthlyPrice: 30,
+                features: [
                     'Gemini Ultra',
-                    '2TB storage'
+                    'Advanced features'
+                ]
+            },
+            {
+                name: 'API',
+                monthlyPrice: 0,
+                features: [
+                    'Pay-as-you-go',
+                    'Gemini Pro'
                 ]
             }
         ]
@@ -741,18 +781,6 @@ const AI_TOOLS = [
                     'Security'
                 ]
             }
-        ],
-        alternatives: [
-            {
-                toolId: 'cursor',
-                savingsPercent: -100,
-                reason: 'More powerful AI features for the same price'
-            },
-            {
-                toolId: 'codeium',
-                savingsPercent: 100,
-                reason: 'Free alternative with solid completion'
-            }
         ]
     },
     {
@@ -782,6 +810,67 @@ const AI_TOOLS = [
                 features: [
                     'Team features',
                     'Admin'
+                ]
+            },
+            {
+                name: 'Enterprise',
+                monthlyPrice: 100,
+                features: [
+                    'Custom deployment',
+                    'SSO'
+                ]
+            }
+        ]
+    },
+    {
+        id: 'windsurf',
+        name: 'Windsurf',
+        category: 'code',
+        plans: [
+            {
+                name: 'Free',
+                monthlyPrice: 0,
+                features: [
+                    'Limited completions',
+                    'Basic features'
+                ]
+            },
+            {
+                name: 'Pro',
+                monthlyPrice: 25,
+                features: [
+                    'Unlimited completions',
+                    'Agentic features'
+                ]
+            }
+        ]
+    },
+    {
+        id: 'anthropic-api',
+        name: 'Anthropic API',
+        category: 'llm',
+        plans: [
+            {
+                name: 'API Direct',
+                monthlyPrice: 0,
+                features: [
+                    'Pay-as-you-go',
+                    'Claude 3 models'
+                ]
+            }
+        ]
+    },
+    {
+        id: 'openai-api',
+        name: 'OpenAI API',
+        category: 'llm',
+        plans: [
+            {
+                name: 'API Direct',
+                monthlyPrice: 0,
+                features: [
+                    'Pay-as-you-go',
+                    'GPT-4 & GPT-3.5'
                 ]
             }
         ]
@@ -853,18 +942,6 @@ const AI_TOOLS = [
                     '60hr fast',
                     'Priority support'
                 ]
-            }
-        ],
-        alternatives: [
-            {
-                toolId: 'dalle',
-                savingsPercent: 30,
-                reason: 'Included with ChatGPT Plus'
-            },
-            {
-                toolId: 'ideogram',
-                savingsPercent: 50,
-                reason: 'Better for text in images'
             }
         ]
     },
@@ -955,18 +1032,6 @@ const AI_TOOLS = [
                     'API access'
                 ]
             }
-        ],
-        alternatives: [
-            {
-                toolId: 'chatgpt',
-                savingsPercent: 70,
-                reason: 'ChatGPT Plus can do most Jasper tasks'
-            },
-            {
-                toolId: 'claude',
-                savingsPercent: 70,
-                reason: 'Claude Pro excels at marketing copy'
-            }
         ]
     },
     {
@@ -981,13 +1046,6 @@ const AI_TOOLS = [
                     'AI writing',
                     'Summaries'
                 ]
-            }
-        ],
-        alternatives: [
-            {
-                toolId: 'chatgpt',
-                savingsPercent: -100,
-                reason: 'Copy-paste to ChatGPT for occasional use'
             }
         ]
     },
@@ -1019,52 +1077,6 @@ const AI_TOOLS = [
                     'Analytics'
                 ]
             }
-        ],
-        alternatives: [
-            {
-                toolId: 'chatgpt',
-                savingsPercent: 40,
-                reason: 'Use ChatGPT for editing if you have it'
-            }
-        ]
-    },
-    {
-        id: 'runway',
-        name: 'Runway',
-        category: 'video',
-        plans: [
-            {
-                name: 'Basic',
-                monthlyPrice: 12,
-                features: [
-                    '625 credits',
-                    'Gen-2'
-                ]
-            },
-            {
-                name: 'Standard',
-                monthlyPrice: 28,
-                features: [
-                    '2250 credits',
-                    'Priority'
-                ]
-            },
-            {
-                name: 'Pro',
-                monthlyPrice: 76,
-                features: [
-                    'Unlimited',
-                    'Custom models'
-                ]
-            },
-            {
-                name: 'Unlimited',
-                monthlyPrice: 144,
-                features: [
-                    'Unlimited Gen-3',
-                    'API'
-                ]
-            }
         ]
     },
     {
@@ -1081,9 +1093,9 @@ const AI_TOOLS = [
             },
             {
                 name: 'Starter',
-                monthlyPrice: 5,
+                monthlyPrice: 11,
                 features: [
-                    '30k characters/mo'
+                    '100k characters/mo'
                 ]
             },
             {
@@ -1099,6 +1111,36 @@ const AI_TOOLS = [
                 features: [
                     '500k characters/mo',
                     'API'
+                ]
+            }
+        ]
+    },
+    {
+        id: 'otter',
+        name: 'Otter.ai',
+        category: 'audio',
+        plans: [
+            {
+                name: 'Basic',
+                monthlyPrice: 0,
+                features: [
+                    '300 mins/mo'
+                ]
+            },
+            {
+                name: 'Pro',
+                monthlyPrice: 17,
+                features: [
+                    '1200 mins/mo',
+                    'Custom vocab'
+                ]
+            },
+            {
+                name: 'Business',
+                monthlyPrice: 30,
+                features: [
+                    '6000 mins/mo',
+                    'Admin'
                 ]
             }
         ]
@@ -1142,47 +1184,55 @@ const AI_TOOLS = [
         ]
     },
     {
-        id: 'otter',
-        name: 'Otter.ai',
-        category: 'audio',
+        id: 'runway',
+        name: 'Runway',
+        category: 'video',
         plans: [
             {
-                name: 'Basic',
+                name: 'Free',
                 monthlyPrice: 0,
                 features: [
-                    '300 mins/mo'
+                    'Limited generations'
+                ]
+            },
+            {
+                name: 'Standard',
+                monthlyPrice: 15,
+                features: [
+                    '20 min/mo generation',
+                    'HD export'
                 ]
             },
             {
                 name: 'Pro',
-                monthlyPrice: 17,
+                monthlyPrice: 30,
                 features: [
-                    '1200 mins/mo',
-                    'Custom vocab'
+                    '40 min/mo generation',
+                    '4K export'
                 ]
             },
             {
-                name: 'Business',
-                monthlyPrice: 30,
+                name: 'Enterprise',
+                monthlyPrice: 100,
                 features: [
-                    '6000 mins/mo',
-                    'Admin'
+                    'Unlimited',
+                    'API access'
                 ]
             }
         ]
     }
 ];
 const USE_CASES = [
-    'Content Creation',
-    'Software Development',
-    'Marketing & Copy',
-    'Research & Analysis',
+    'Coding / Development',
+    'Writing / Content Creation',
+    'Data Analysis / Research',
     'Customer Support',
-    'Data Analysis',
+    'Marketing & Copy',
     'Design & Creative',
     'Sales & Outreach',
     'Education & Training',
     'Personal Productivity',
+    'Mixed',
     'Other'
 ];
 function getToolById(id) {
@@ -1221,6 +1271,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$ai$2d$tools$2d$data$2
 ;
 ;
 ;
+const STORAGE_KEY = 'cutmyai-form-state';
 function AuditForm({ onSubmit, isLoading }) {
     const [tools, setTools] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([
         {
@@ -1231,6 +1282,31 @@ function AuditForm({ onSubmit, isLoading }) {
             teamSize: 1,
             useCase: ''
         }
+    ]);
+    const [isHydrated, setIsHydrated] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    // Load from localStorage on mount
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            try {
+                const parsed = JSON.parse(stored);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                    setTools(parsed);
+                }
+            } catch (e) {
+                console.error('Failed to parse stored form state:', e);
+            }
+        }
+        setIsHydrated(true);
+    }, []);
+    // Save to localStorage whenever tools change
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        if (isHydrated) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(tools));
+        }
+    }, [
+        tools,
+        isHydrated
     ]);
     const addTool = ()=>{
         setTools([
@@ -1291,6 +1367,23 @@ function AuditForm({ onSubmit, isLoading }) {
         audio: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$ai$2d$tools$2d$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AI_TOOLS"].filter((t)=>t.category === 'audio'),
         productivity: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$ai$2d$tools$2d$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AI_TOOLS"].filter((t)=>t.category === 'productivity')
     };
+    if (!isHydrated) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
+            className: "border-border/50 shadow-sm",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
+                className: "p-8 text-center text-muted-foreground",
+                children: "Loading form..."
+            }, void 0, false, {
+                fileName: "[project]/components/audit-form.tsx",
+                lineNumber: 129,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "[project]/components/audit-form.tsx",
+            lineNumber: 128,
+            columnNumber: 7
+        }, this);
+    }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
         onSubmit: handleSubmit,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -1304,20 +1397,20 @@ function AuditForm({ onSubmit, isLoading }) {
                             children: "Your AI Tools"
                         }, void 0, false, {
                             fileName: "[project]/components/audit-form.tsx",
-                            lineNumber: 104,
+                            lineNumber: 140,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardDescription"], {
-                            children: "Add each AI tool your team pays for. We'll analyze your spending and find savings."
+                            children: "Add each AI tool your team pays for. We'll analyze your spending and find savings. (Your data is saved locally and never sent to servers)"
                         }, void 0, false, {
                             fileName: "[project]/components/audit-form.tsx",
-                            lineNumber: 105,
+                            lineNumber: 141,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/audit-form.tsx",
-                    lineNumber: 103,
+                    lineNumber: 139,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1337,7 +1430,7 @@ function AuditForm({ onSubmit, isLoading }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/audit-form.tsx",
-                                                lineNumber: 113,
+                                                lineNumber: 150,
                                                 columnNumber: 17
                                             }, this),
                                             tools.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1350,18 +1443,18 @@ function AuditForm({ onSubmit, isLoading }) {
                                                     className: "size-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/audit-form.tsx",
-                                                    lineNumber: 122,
+                                                    lineNumber: 159,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/audit-form.tsx",
-                                                lineNumber: 115,
+                                                lineNumber: 152,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/audit-form.tsx",
-                                        lineNumber: 112,
+                                        lineNumber: 149,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1372,10 +1465,10 @@ function AuditForm({ onSubmit, isLoading }) {
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
                                                         htmlFor: `tool-${tool.id}`,
-                                                        children: "AI Tool"
+                                                        children: "AI Tool *"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/audit-form.tsx",
-                                                        lineNumber: 129,
+                                                        lineNumber: 167,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -1388,12 +1481,12 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                     placeholder: "Select a tool"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/audit-form.tsx",
-                                                                    lineNumber: 135,
+                                                                    lineNumber: 173,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/audit-form.tsx",
-                                                                lineNumber: 134,
+                                                                lineNumber: 172,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1404,7 +1497,7 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                                 children: "LLMs & Chatbots"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/audit-form.tsx",
-                                                                                lineNumber: 139,
+                                                                                lineNumber: 177,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             categorizedTools.llm.map((t)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1412,13 +1505,13 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                                     children: t.name
                                                                                 }, t.id, false, {
                                                                                     fileName: "[project]/components/audit-form.tsx",
-                                                                                    lineNumber: 141,
+                                                                                    lineNumber: 179,
                                                                                     columnNumber: 27
                                                                                 }, this))
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/audit-form.tsx",
-                                                                        lineNumber: 138,
+                                                                        lineNumber: 176,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectGroup"], {
@@ -1427,7 +1520,7 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                                 children: "Code Assistants"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/audit-form.tsx",
-                                                                                lineNumber: 145,
+                                                                                lineNumber: 183,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             categorizedTools.code.map((t)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1435,13 +1528,13 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                                     children: t.name
                                                                                 }, t.id, false, {
                                                                                     fileName: "[project]/components/audit-form.tsx",
-                                                                                    lineNumber: 147,
+                                                                                    lineNumber: 185,
                                                                                     columnNumber: 27
                                                                                 }, this))
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/audit-form.tsx",
-                                                                        lineNumber: 144,
+                                                                        lineNumber: 182,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectGroup"], {
@@ -1450,7 +1543,7 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                                 children: "Image Generation"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/audit-form.tsx",
-                                                                                lineNumber: 151,
+                                                                                lineNumber: 189,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             categorizedTools.image.map((t)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1458,13 +1551,13 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                                     children: t.name
                                                                                 }, t.id, false, {
                                                                                     fileName: "[project]/components/audit-form.tsx",
-                                                                                    lineNumber: 153,
+                                                                                    lineNumber: 191,
                                                                                     columnNumber: 27
                                                                                 }, this))
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/audit-form.tsx",
-                                                                        lineNumber: 150,
+                                                                        lineNumber: 188,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectGroup"], {
@@ -1473,7 +1566,7 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                                 children: "Video"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/audit-form.tsx",
-                                                                                lineNumber: 157,
+                                                                                lineNumber: 195,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             categorizedTools.video.map((t)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1481,13 +1574,13 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                                     children: t.name
                                                                                 }, t.id, false, {
                                                                                     fileName: "[project]/components/audit-form.tsx",
-                                                                                    lineNumber: 159,
+                                                                                    lineNumber: 197,
                                                                                     columnNumber: 27
                                                                                 }, this))
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/audit-form.tsx",
-                                                                        lineNumber: 156,
+                                                                        lineNumber: 194,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectGroup"], {
@@ -1496,7 +1589,7 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                                 children: "Audio & Voice"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/audit-form.tsx",
-                                                                                lineNumber: 163,
+                                                                                lineNumber: 201,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             categorizedTools.audio.map((t)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1504,13 +1597,13 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                                     children: t.name
                                                                                 }, t.id, false, {
                                                                                     fileName: "[project]/components/audit-form.tsx",
-                                                                                    lineNumber: 165,
+                                                                                    lineNumber: 203,
                                                                                     columnNumber: 27
                                                                                 }, this))
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/audit-form.tsx",
-                                                                        lineNumber: 162,
+                                                                        lineNumber: 200,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectGroup"], {
@@ -1519,7 +1612,7 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                                 children: "Productivity"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/audit-form.tsx",
-                                                                                lineNumber: 169,
+                                                                                lineNumber: 207,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             categorizedTools.productivity.map((t)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1527,31 +1620,31 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                                     children: t.name
                                                                                 }, t.id, false, {
                                                                                     fileName: "[project]/components/audit-form.tsx",
-                                                                                    lineNumber: 171,
+                                                                                    lineNumber: 209,
                                                                                     columnNumber: 27
                                                                                 }, this))
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/audit-form.tsx",
-                                                                        lineNumber: 168,
+                                                                        lineNumber: 206,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/audit-form.tsx",
-                                                                lineNumber: 137,
+                                                                lineNumber: 175,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/audit-form.tsx",
-                                                        lineNumber: 130,
+                                                        lineNumber: 168,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/audit-form.tsx",
-                                                lineNumber: 128,
+                                                lineNumber: 166,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1559,10 +1652,10 @@ function AuditForm({ onSubmit, isLoading }) {
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
                                                         htmlFor: `plan-${tool.id}`,
-                                                        children: "Plan"
+                                                        children: "Plan *"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/audit-form.tsx",
-                                                        lineNumber: 179,
+                                                        lineNumber: 218,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -1576,12 +1669,12 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                     placeholder: "Select plan"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/audit-form.tsx",
-                                                                    lineNumber: 186,
+                                                                    lineNumber: 225,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/audit-form.tsx",
-                                                                lineNumber: 185,
+                                                                lineNumber: 224,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1596,29 +1689,29 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                             ]
                                                                         }, p.name, true, {
                                                                             fileName: "[project]/components/audit-form.tsx",
-                                                                            lineNumber: 191,
+                                                                            lineNumber: 230,
                                                                             columnNumber: 27
                                                                         }, this))
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/audit-form.tsx",
-                                                                    lineNumber: 189,
+                                                                    lineNumber: 228,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/audit-form.tsx",
-                                                                lineNumber: 188,
+                                                                lineNumber: 227,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/audit-form.tsx",
-                                                        lineNumber: 180,
+                                                        lineNumber: 219,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/audit-form.tsx",
-                                                lineNumber: 178,
+                                                lineNumber: 217,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1626,10 +1719,10 @@ function AuditForm({ onSubmit, isLoading }) {
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
                                                         htmlFor: `cost-${tool.id}`,
-                                                        children: "Monthly Cost per User"
+                                                        children: "Monthly Cost per Seat"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/audit-form.tsx",
-                                                        lineNumber: 201,
+                                                        lineNumber: 241,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1639,32 +1732,33 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                 className: "absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/audit-form.tsx",
-                                                                lineNumber: 203,
+                                                                lineNumber: 243,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
                                                                 id: `cost-${tool.id}`,
                                                                 type: "number",
                                                                 min: 0,
+                                                                step: 0.01,
                                                                 value: tool.monthlyCost || '',
                                                                 onChange: (e)=>updateTool(tool.id, 'monthlyCost', parseFloat(e.target.value) || 0),
                                                                 className: "pl-9",
                                                                 placeholder: "0"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/audit-form.tsx",
-                                                                lineNumber: 204,
+                                                                lineNumber: 244,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/audit-form.tsx",
-                                                        lineNumber: 202,
+                                                        lineNumber: 242,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/audit-form.tsx",
-                                                lineNumber: 200,
+                                                lineNumber: 240,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1672,10 +1766,10 @@ function AuditForm({ onSubmit, isLoading }) {
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
                                                         htmlFor: `team-${tool.id}`,
-                                                        children: "Team Size"
+                                                        children: "Number of Seats/Users"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/audit-form.tsx",
-                                                        lineNumber: 217,
+                                                        lineNumber: 259,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -1687,13 +1781,13 @@ function AuditForm({ onSubmit, isLoading }) {
                                                         placeholder: "1"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/audit-form.tsx",
-                                                        lineNumber: 218,
+                                                        lineNumber: 260,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/audit-form.tsx",
-                                                lineNumber: 216,
+                                                lineNumber: 258,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1701,10 +1795,10 @@ function AuditForm({ onSubmit, isLoading }) {
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
                                                         htmlFor: `usecase-${tool.id}`,
-                                                        children: "Primary Use Case"
+                                                        children: "Primary Use Case *"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/audit-form.tsx",
-                                                        lineNumber: 229,
+                                                        lineNumber: 272,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -1717,12 +1811,12 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                     placeholder: "How do you use this tool?"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/audit-form.tsx",
-                                                                    lineNumber: 235,
+                                                                    lineNumber: 278,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/audit-form.tsx",
-                                                                lineNumber: 234,
+                                                                lineNumber: 277,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1732,41 +1826,41 @@ function AuditForm({ onSubmit, isLoading }) {
                                                                             children: useCase
                                                                         }, useCase, false, {
                                                                             fileName: "[project]/components/audit-form.tsx",
-                                                                            lineNumber: 240,
+                                                                            lineNumber: 283,
                                                                             columnNumber: 27
                                                                         }, this))
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/audit-form.tsx",
-                                                                    lineNumber: 238,
+                                                                    lineNumber: 281,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/audit-form.tsx",
-                                                                lineNumber: 237,
+                                                                lineNumber: 280,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/audit-form.tsx",
-                                                        lineNumber: 230,
+                                                        lineNumber: 273,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/audit-form.tsx",
-                                                lineNumber: 228,
+                                                lineNumber: 271,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/audit-form.tsx",
-                                        lineNumber: 127,
+                                        lineNumber: 164,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, tool.id, true, {
                                 fileName: "[project]/components/audit-form.tsx",
-                                lineNumber: 111,
+                                lineNumber: 148,
                                 columnNumber: 13
                             }, this)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1779,14 +1873,14 @@ function AuditForm({ onSubmit, isLoading }) {
                                     className: "mr-2 size-4"
                                 }, void 0, false, {
                                     fileName: "[project]/components/audit-form.tsx",
-                                    lineNumber: 256,
+                                    lineNumber: 299,
                                     columnNumber: 13
                                 }, this),
                                 "Add Another Tool"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/audit-form.tsx",
-                            lineNumber: 250,
+                            lineNumber: 293,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1800,7 +1894,7 @@ function AuditForm({ onSubmit, isLoading }) {
                                             children: "Current Monthly Spend"
                                         }, void 0, false, {
                                             fileName: "[project]/components/audit-form.tsx",
-                                            lineNumber: 262,
+                                            lineNumber: 305,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1811,13 +1905,13 @@ function AuditForm({ onSubmit, isLoading }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/audit-form.tsx",
-                                            lineNumber: 263,
+                                            lineNumber: 306,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/audit-form.tsx",
-                                    lineNumber: 261,
+                                    lineNumber: 304,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1831,36 +1925,36 @@ function AuditForm({ onSubmit, isLoading }) {
                                             className: "size-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/audit-form.tsx",
-                                            lineNumber: 272,
+                                            lineNumber: 315,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/audit-form.tsx",
-                                    lineNumber: 265,
+                                    lineNumber: 308,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/audit-form.tsx",
-                            lineNumber: 260,
+                            lineNumber: 303,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/audit-form.tsx",
-                    lineNumber: 109,
+                    lineNumber: 146,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/audit-form.tsx",
-            lineNumber: 102,
+            lineNumber: 138,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/audit-form.tsx",
-        lineNumber: 101,
+        lineNumber: 137,
         columnNumber: 5
     }, this);
 }

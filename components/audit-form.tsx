@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Plus, Trash2, ArrowRight, DollarSign } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -31,10 +31,36 @@ interface ToolEntry {
   useCase: string
 }
 
+const STORAGE_KEY = 'cutmyai-form-state'
+
 export function AuditForm({ onSubmit, isLoading }: AuditFormProps) {
   const [tools, setTools] = useState<ToolEntry[]>([
     { id: '1', toolId: '', plan: '', monthlyCost: 0, teamSize: 1, useCase: '' },
   ])
+  const [isHydrated, setIsHydrated] = useState(false)
+
+  // Load from localStorage on mount
+  useEffect(() => {
+    const stored = localStorage.getItem(STORAGE_KEY)
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored)
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setTools(parsed)
+        }
+      } catch (e) {
+        console.error('Failed to parse stored form state:', e)
+      }
+    }
+    setIsHydrated(true)
+  }, [])
+
+  // Save to localStorage whenever tools change
+  useEffect(() => {
+    if (isHydrated) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tools))
+    }
+  }, [tools, isHydrated])
 
   const addTool = () => {
     setTools([
@@ -97,6 +123,16 @@ export function AuditForm({ onSubmit, isLoading }: AuditFormProps) {
     productivity: AI_TOOLS.filter(t => t.category === 'productivity'),
   }
 
+  if (!isHydrated) {
+    return (
+      <Card className="border-border/50 shadow-sm">
+        <CardContent className="p-8 text-center text-muted-foreground">
+          Loading form...
+        </CardContent>
+      </Card>
+    )
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <Card className="border-border/50 shadow-sm">
@@ -104,6 +140,7 @@ export function AuditForm({ onSubmit, isLoading }: AuditFormProps) {
           <CardTitle className="text-xl">Your AI Tools</CardTitle>
           <CardDescription>
             Add each AI tool your team pays for. We&apos;ll analyze your spending and find savings.
+            (Your data is saved locally and never sent to servers)
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-6">
@@ -125,8 +162,9 @@ export function AuditForm({ onSubmit, isLoading }: AuditFormProps) {
               </div>
               
               <div className="grid gap-4 sm:grid-cols-2">
+                {/* Tool Selection */}
                 <div className="flex flex-col gap-2">
-                  <Label htmlFor={`tool-${tool.id}`}>AI Tool</Label>
+                  <Label htmlFor={`tool-${tool.id}`}>AI Tool *</Label>
                   <Select
                     value={tool.toolId}
                     onValueChange={(value) => updateTool(tool.id, 'toolId', value)}
@@ -175,8 +213,9 @@ export function AuditForm({ onSubmit, isLoading }: AuditFormProps) {
                   </Select>
                 </div>
 
+                {/* Plan Selection */}
                 <div className="flex flex-col gap-2">
-                  <Label htmlFor={`plan-${tool.id}`}>Plan</Label>
+                  <Label htmlFor={`plan-${tool.id}`}>Plan *</Label>
                   <Select
                     value={tool.plan}
                     onValueChange={(value) => updateTool(tool.id, 'plan', value)}
@@ -197,14 +236,16 @@ export function AuditForm({ onSubmit, isLoading }: AuditFormProps) {
                   </Select>
                 </div>
 
+                {/* Monthly Cost */}
                 <div className="flex flex-col gap-2">
-                  <Label htmlFor={`cost-${tool.id}`}>Monthly Cost per User</Label>
+                  <Label htmlFor={`cost-${tool.id}`}>Monthly Cost per Seat</Label>
                   <div className="relative">
                     <DollarSign className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
                     <Input
                       id={`cost-${tool.id}`}
                       type="number"
                       min={0}
+                      step={0.01}
                       value={tool.monthlyCost || ''}
                       onChange={(e) => updateTool(tool.id, 'monthlyCost', parseFloat(e.target.value) || 0)}
                       className="pl-9"
@@ -213,8 +254,9 @@ export function AuditForm({ onSubmit, isLoading }: AuditFormProps) {
                   </div>
                 </div>
 
+                {/* Team Size / Number of Seats */}
                 <div className="flex flex-col gap-2">
-                  <Label htmlFor={`team-${tool.id}`}>Team Size</Label>
+                  <Label htmlFor={`team-${tool.id}`}>Number of Seats/Users</Label>
                   <Input
                     id={`team-${tool.id}`}
                     type="number"
@@ -225,8 +267,9 @@ export function AuditForm({ onSubmit, isLoading }: AuditFormProps) {
                   />
                 </div>
 
+                {/* Use Case */}
                 <div className="flex flex-col gap-2 sm:col-span-2">
-                  <Label htmlFor={`usecase-${tool.id}`}>Primary Use Case</Label>
+                  <Label htmlFor={`usecase-${tool.id}`}>Primary Use Case *</Label>
                   <Select
                     value={tool.useCase}
                     onValueChange={(value) => updateTool(tool.id, 'useCase', value)}

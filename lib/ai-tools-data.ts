@@ -56,6 +56,7 @@ export const AI_TOOLS: AITool[] = [
       { name: 'Plus', monthlyPrice: 20, features: ['GPT-4', 'DALL-E', 'Plugins'] },
       { name: 'Team', monthlyPrice: 30, features: ['Admin controls', 'Higher limits'] },
       { name: 'Enterprise', monthlyPrice: 60, features: ['Custom deployment', 'SSO'] },
+      { name: 'API Direct', monthlyPrice: 0, features: ['Pay-as-you-go', 'GPT-4'] },
     ],
     alternatives: [
       { toolId: 'claude', savingsPercent: 0, reason: 'Better for long-form writing and analysis' },
@@ -69,17 +70,21 @@ export const AI_TOOLS: AITool[] = [
     plans: [
       { name: 'Free', monthlyPrice: 0, features: ['Claude 3 Sonnet', 'Limited messages'] },
       { name: 'Pro', monthlyPrice: 20, features: ['Claude 3 Opus', 'Higher limits'] },
+      { name: 'Max', monthlyPrice: 30, features: ['Claude 3 Opus Max', 'Extended context'] },
       { name: 'Team', monthlyPrice: 30, features: ['Admin controls', 'Artifacts'] },
       { name: 'Enterprise', monthlyPrice: 60, features: ['Custom deployment'] },
+      { name: 'API Direct', monthlyPrice: 0, features: ['Pay-as-you-go', 'Claude 3'] },
     ],
   },
   {
     id: 'gemini',
-    name: 'Google Gemini',
+    name: 'Gemini',
     category: 'llm',
     plans: [
       { name: 'Free', monthlyPrice: 0, features: ['Gemini Pro', 'Google integration'] },
-      { name: 'Advanced', monthlyPrice: 20, features: ['Gemini Ultra', '2TB storage'] },
+      { name: 'Pro', monthlyPrice: 20, features: ['Gemini Pro', 'Higher limits'] },
+      { name: 'Ultra', monthlyPrice: 30, features: ['Gemini Ultra', 'Advanced features'] },
+      { name: 'API', monthlyPrice: 0, features: ['Pay-as-you-go', 'Gemini Pro'] },
     ],
   },
   {
@@ -91,10 +96,6 @@ export const AI_TOOLS: AITool[] = [
       { name: 'Business', monthlyPrice: 19, features: ['Organization policies', 'IP indemnity'] },
       { name: 'Enterprise', monthlyPrice: 39, features: ['Fine-tuned models', 'Security'] },
     ],
-    alternatives: [
-      { toolId: 'cursor', savingsPercent: -100, reason: 'More powerful AI features for the same price' },
-      { toolId: 'codeium', savingsPercent: 100, reason: 'Free alternative with solid completion' },
-    ],
   },
   {
     id: 'cursor',
@@ -104,6 +105,32 @@ export const AI_TOOLS: AITool[] = [
       { name: 'Hobby', monthlyPrice: 0, features: ['Limited completions', 'Basic chat'] },
       { name: 'Pro', monthlyPrice: 20, features: ['Unlimited completions', 'GPT-4'] },
       { name: 'Business', monthlyPrice: 40, features: ['Team features', 'Admin'] },
+      { name: 'Enterprise', monthlyPrice: 100, features: ['Custom deployment', 'SSO'] },
+    ],
+  },
+  {
+    id: 'windsurf',
+    name: 'Windsurf',
+    category: 'code',
+    plans: [
+      { name: 'Free', monthlyPrice: 0, features: ['Limited completions', 'Basic features'] },
+      { name: 'Pro', monthlyPrice: 25, features: ['Unlimited completions', 'Agentic features'] },
+    ],
+  },
+  {
+    id: 'anthropic-api',
+    name: 'Anthropic API',
+    category: 'llm',
+    plans: [
+      { name: 'API Direct', monthlyPrice: 0, features: ['Pay-as-you-go', 'Claude 3 models'] },
+    ],
+  },
+  {
+    id: 'openai-api',
+    name: 'OpenAI API',
+    category: 'llm',
+    plans: [
+      { name: 'API Direct', monthlyPrice: 0, features: ['Pay-as-you-go', 'GPT-4 & GPT-3.5'] },
     ],
   },
   {
@@ -125,10 +152,6 @@ export const AI_TOOLS: AITool[] = [
       { name: 'Standard', monthlyPrice: 30, features: ['Unlimited relaxed', '15hr fast'] },
       { name: 'Pro', monthlyPrice: 60, features: ['30hr fast', 'Stealth mode'] },
       { name: 'Mega', monthlyPrice: 120, features: ['60hr fast', 'Priority support'] },
-    ],
-    alternatives: [
-      { toolId: 'dalle', savingsPercent: 30, reason: 'Included with ChatGPT Plus' },
-      { toolId: 'ideogram', savingsPercent: 50, reason: 'Better for text in images' },
     ],
   },
   {
@@ -160,10 +183,6 @@ export const AI_TOOLS: AITool[] = [
       { name: 'Pro', monthlyPrice: 69, features: ['1 seat', 'Art generation'] },
       { name: 'Business', monthlyPrice: 125, features: ['Custom', 'API access'] },
     ],
-    alternatives: [
-      { toolId: 'chatgpt', savingsPercent: 70, reason: 'ChatGPT Plus can do most Jasper tasks' },
-      { toolId: 'claude', savingsPercent: 70, reason: 'Claude Pro excels at marketing copy' },
-    ],
   },
   {
     id: 'notion-ai',
@@ -171,9 +190,6 @@ export const AI_TOOLS: AITool[] = [
     category: 'productivity',
     plans: [
       { name: 'Add-on', monthlyPrice: 10, features: ['AI writing', 'Summaries'] },
-    ],
-    alternatives: [
-      { toolId: 'chatgpt', savingsPercent: -100, reason: 'Copy-paste to ChatGPT for occasional use' },
     ],
   },
   {
@@ -185,20 +201,6 @@ export const AI_TOOLS: AITool[] = [
       { name: 'Premium', monthlyPrice: 12, features: ['Advanced suggestions', 'Tone'] },
       { name: 'Business', monthlyPrice: 15, features: ['Team features', 'Analytics'] },
     ],
-    alternatives: [
-      { toolId: 'chatgpt', savingsPercent: 40, reason: 'Use ChatGPT for editing if you have it' },
-    ],
-  },
-  {
-    id: 'runway',
-    name: 'Runway',
-    category: 'video',
-    plans: [
-      { name: 'Basic', monthlyPrice: 12, features: ['625 credits', 'Gen-2'] },
-      { name: 'Standard', monthlyPrice: 28, features: ['2250 credits', 'Priority'] },
-      { name: 'Pro', monthlyPrice: 76, features: ['Unlimited', 'Custom models'] },
-      { name: 'Unlimited', monthlyPrice: 144, features: ['Unlimited Gen-3', 'API'] },
-    ],
   },
   {
     id: 'elevenlabs',
@@ -206,9 +208,19 @@ export const AI_TOOLS: AITool[] = [
     category: 'audio',
     plans: [
       { name: 'Free', monthlyPrice: 0, features: ['10k characters/mo'] },
-      { name: 'Starter', monthlyPrice: 5, features: ['30k characters/mo'] },
+      { name: 'Starter', monthlyPrice: 11, features: ['100k characters/mo'] },
       { name: 'Creator', monthlyPrice: 22, features: ['100k characters/mo'] },
       { name: 'Pro', monthlyPrice: 99, features: ['500k characters/mo', 'API'] },
+    ],
+  },
+  {
+    id: 'otter',
+    name: 'Otter.ai',
+    category: 'audio',
+    plans: [
+      { name: 'Basic', monthlyPrice: 0, features: ['300 mins/mo'] },
+      { name: 'Pro', monthlyPrice: 17, features: ['1200 mins/mo', 'Custom vocab'] },
+      { name: 'Business', monthlyPrice: 30, features: ['6000 mins/mo', 'Admin'] },
     ],
   },
   {
@@ -225,28 +237,29 @@ export const AI_TOOLS: AITool[] = [
     ],
   },
   {
-    id: 'otter',
-    name: 'Otter.ai',
-    category: 'audio',
+    id: 'runway',
+    name: 'Runway',
+    category: 'video',
     plans: [
-      { name: 'Basic', monthlyPrice: 0, features: ['300 mins/mo'] },
-      { name: 'Pro', monthlyPrice: 17, features: ['1200 mins/mo', 'Custom vocab'] },
-      { name: 'Business', monthlyPrice: 30, features: ['6000 mins/mo', 'Admin'] },
+      { name: 'Free', monthlyPrice: 0, features: ['Limited generations'] },
+      { name: 'Standard', monthlyPrice: 15, features: ['20 min/mo generation', 'HD export'] },
+      { name: 'Pro', monthlyPrice: 30, features: ['40 min/mo generation', '4K export'] },
+      { name: 'Enterprise', monthlyPrice: 100, features: ['Unlimited', 'API access'] },
     ],
   },
 ]
 
 export const USE_CASES = [
-  'Content Creation',
-  'Software Development',
-  'Marketing & Copy',
-  'Research & Analysis',
+  'Coding / Development',
+  'Writing / Content Creation',
+  'Data Analysis / Research',
   'Customer Support',
-  'Data Analysis',
+  'Marketing & Copy',
   'Design & Creative',
   'Sales & Outreach',
   'Education & Training',
   'Personal Productivity',
+  'Mixed',
   'Other',
 ]
 
