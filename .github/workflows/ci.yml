@@ -11,6 +11,8 @@ on:
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout repository
@@ -22,8 +24,10 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install dependencies
-        run: npm install --no-audit --prefer-offline
+      - name: Install dependencies (try npm ci, fallback to npm install)
+        run: |
+          set -e
+          npm ci || npm install --no-audit --prefer-offline
 
       - name: Run lint
         run: npm run lint
