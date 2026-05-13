@@ -13,5 +13,12 @@
   },
   "plugins": ["@typescript-eslint"],
   "extends": [],
-  "rules": {}
+  "rules": {},
+  "ignorePatterns": ["node_modules", ".next", "dist", "build", ".git"],
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+      "rules": {}
+    }
+  ]
 }
