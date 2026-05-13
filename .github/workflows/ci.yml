@@ -24,10 +24,8 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install dependencies (try npm ci, fallback to npm install)
-        run: |
-          set -e
-          npm ci || npm install --no-audit --prefer-offline
+      - name: Install dependencies
+        run: npm install --prefer-offline --no-audit
 
       - name: Run lint
         run: npm run lint
