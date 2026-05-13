@@ -12,7 +12,8 @@ export function analyzeSpending(tools: UserTool[]): AuditResult {
     const teamCost = userTool.monthlyCost * userTool.teamSize
     totalMonthlySpend += teamCost
 
-    const recommendation = generateRecommendation(userTool, teamCost)
+    // Pass full tools array for overlap detection
+    const recommendation = generateRecommendation(userTool, teamCost, tools)
     if (recommendation) {
       recommendations.push(recommendation)
     }
@@ -40,7 +41,7 @@ export function analyzeSpending(tools: UserTool[]): AuditResult {
   }
 }
 
-function generateRecommendation(userTool: UserTool, teamCost: number): Recommendation | null {
+function generateRecommendation(userTool: UserTool, teamCost: number, allTools: UserTool[]): Recommendation | null {
   const toolData = getToolById(userTool.toolId)
   if (!toolData) return null
 
@@ -60,6 +61,31 @@ function generateRecommendation(userTool: UserTool, teamCost: number): Recommend
   // Usage-based recommendations
   const useCaseMismatch = detectUseCaseMismatch(userTool, toolData.category)
   
+  // Check for overlapping tools (NEW: Pass full tools array)
+  const overlappingTools = findOverlappingTools(userTool, allTools)
+  if (overlappingTools.length > 0) {
+    const totalRedundantCost = overlappingTools.reduce((sum, toolName) => {
+      const redundantTool = allTools.find(t => getToolById(t.toolId)?.name === toolName)
+      if (redundantTool) {
+        return sum + (redundantTool.monthlyCost * redundantTool.teamSize)
+      }
+      return sum
+    }, 0)
+
+    return {
+      toolId: userTool.toolId,
+      toolName: toolData.name,
+      currentPlan: userTool.plan,
+      currentCost: teamCost,
+      recommendationType: 'optimize',
+      recommendation: 'Consolidate redundant tools',
+      newCost: teamCost, // Keep primary tool
+      monthlySavings: totalRedundantCost,
+      reason: `You have ${overlappingTools.length} overlapping ${toolData.category} tools: ${toolData.name}, ${overlappingTools.join(', ')}. Consider consolidating to one primary tool and eliminating $${totalRedundantCost.toFixed(2)}/month in redundant costs.`,
+      priority: 'high',
+    }
+  }
+
   // Determine recommendation type
   if (bestAlternative && altTool && bestAlternative.savingsPercent >= 50) {
     const newCost = Math.round(teamCost * (1 - bestAlternative.savingsPercent / 100))
@@ -72,7 +98,7 @@ function generateRecommendation(userTool: UserTool, teamCost: number): Recommend
       recommendation: `Switch to ${altTool.name}`,
       newCost,
       monthlySavings: teamCost - newCost,
-      reason: bestAlternative.reason,
+      reason: `${bestAlternative.reason}. Current cost: $${teamCost}/month, Alternative cost: $${newCost}/month.`,
       priority: bestAlternative.savingsPercent >= 70 ? 'high' : 'medium',
     }
   }
@@ -88,7 +114,7 @@ function generateRecommendation(userTool: UserTool, teamCost: number): Recommend
       recommendation: `Downgrade to ${downgradePlan.name} plan`,
       newCost,
       monthlySavings: teamCost - newCost,
-      reason: `Your use case (${userTool.useCase}) may not require ${userTool.plan} features`,
+      reason: `Your primary use case is ${userTool.useCase}, which doesn't require ${userTool.plan} features. ${downgradePlan.name} plan ($${downgradePlan.monthlyPrice}/month) includes the features you need.`,
       priority: 'medium',
     }
   }
@@ -100,6 +126,7 @@ function generateRecommendation(userTool: UserTool, teamCost: number): Recommend
     )
     if (teamPlan && teamPlan.monthlyPrice < currentPlan.monthlyPrice) {
       const newCost = teamPlan.monthlyPrice * userTool.teamSize
+      const downgradeSavings = teamCost - newCost
       return {
         toolId: userTool.toolId,
         toolName: toolData.name,
@@ -108,47 +135,26 @@ function generateRecommendation(userTool: UserTool, teamCost: number): Recommend
         recommendationType: 'downgrade',
         recommendation: `Downgrade to ${teamPlan.name} plan`,
         newCost,
-        monthlySavings: teamCost - newCost,
-        reason: `With ${userTool.teamSize} user${userTool.teamSize > 1 ? 's' : ''}, you likely don't need enterprise features`,
+        monthlySavings: downgradeSavings,
+        reason: `With only ${userTool.teamSize} user${userTool.teamSize > 1 ? 's' : ''}, enterprise features (SSO, advanced admin controls, SLA) are likely unnecessary. ${teamPlan.name} plan ($${teamPlan.monthlyPrice}/month/user) provides sufficient capabilities, saving $${downgradeSavings}/month.`,
         priority: 'high',
       }
     }
   }
 
-  // Check for overlapping tools
-  const overlappingTools = findOverlappingTools(userTool)
-  if (overlappingTools.length > 0) {
-    return {
-      toolId: userTool.toolId,
-      toolName: toolData.name,
-      currentPlan: userTool.plan,
-      currentCost: teamCost,
-      recommendationType: 'optimize',
-      recommendation: 'Consolidate tools',
-      newCost: 0,
-      monthlySavings: teamCost,
-      reason: `This tool overlaps with ${overlappingTools.join(', ')} - consider consolidating`,
-      priority: 'medium',
-    }
+  // Tool is well-optimized (defensible reasoning)
+  return {
+    toolId: userTool.toolId,
+    toolName: toolData.name,
+    currentPlan: userTool.plan,
+    currentCost: teamCost,
+    recommendationType: 'keep',
+    recommendation: 'Keep current plan',
+    newCost: teamCost,
+    monthlySavings: 0,
+    reason: `This ${toolData.name} ${userTool.plan} plan appears appropriate for your use case (${userTool.useCase}) with ${userTool.teamSize} team member${userTool.teamSize > 1 ? 's' : ''}.`,
+    priority: 'low',
   }
-
-  // Tool is well-optimized
-  if (currentPlan.monthlyPrice <= 20 || userTool.teamSize >= 5) {
-    return {
-      toolId: userTool.toolId,
-      toolName: toolData.name,
-      currentPlan: userTool.plan,
-      currentCost: teamCost,
-      recommendationType: 'keep',
-      recommendation: 'Keep current plan',
-      newCost: teamCost,
-      monthlySavings: 0,
-      reason: 'This tool appears well-optimized for your needs',
-      priority: 'low',
-    }
-  }
-
-  return null
 }
 
 function detectUseCaseMismatch(userTool: UserTool, category: string): boolean {
@@ -169,18 +175,27 @@ function detectUseCaseMismatch(userTool: UserTool, category: string): boolean {
   return !validCategories.includes(category)
 }
 
-function findOverlappingTools(userTool: UserTool): string[] {
-  // This would be more sophisticated in production
-  // For now, detect common overlaps
+function findOverlappingTools(userTool: UserTool, allTools: UserTool[]): string[] {
   const toolData = getToolById(userTool.toolId)
   if (!toolData) return []
 
   const overlaps: string[] = []
-  
-  // LLM tools often overlap
-  if (toolData.category === 'llm') {
-    const llmTools = AI_TOOLS.filter(t => t.category === 'llm' && t.id !== userTool.toolId)
-    // In a real app, we'd check the user's full tool list
+
+  // Check for overlapping tools by category
+  const toolsInSameCategory = allTools.filter(t => {
+    if (t.toolId === userTool.toolId) return false
+    const otherTool = getToolById(t.toolId)
+    return otherTool && otherTool.category === toolData.category
+  })
+
+  // For LLM tools, detect multiple similar tools
+  if (toolData.category === 'llm' && toolsInSameCategory.length > 0) {
+    overlaps.push(...toolsInSameCategory.map(t => getToolById(t.toolId)?.name || '').filter(Boolean))
+  }
+
+  // For code tools, detect multiple similar tools
+  if (toolData.category === 'code' && toolsInSameCategory.length > 0) {
+    overlaps.push(...toolsInSameCategory.map(t => getToolById(t.toolId)?.name || '').filter(Boolean))
   }
 
   return overlaps

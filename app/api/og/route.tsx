@@ -1,15 +1,35 @@
 import { ImageResponse } from 'next/og'
 import { NextRequest } from 'next/server'
+import { getPublicAudit } from '@/lib/audit-storage'
 
 export const runtime = 'edge'
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   
+  // Support both old format and new audit format
+  const auditId = searchParams.get('auditId')
   const savings = searchParams.get('savings') || '0'
   const annual = searchParams.get('annual') || '0'
   const tools = searchParams.get('tools') || '0'
   const percent = searchParams.get('percent') || '0'
+
+  // Try to load from audit if auditId provided
+  let auditSavings = savings
+  let auditTools = tools
+  let auditPercent = percent
+  if (auditId) {
+    try {
+      const audit = await getPublicAudit(auditId)
+      if (audit) {
+        auditSavings = Math.round(audit.potential_savings).toString()
+        auditTools = audit.tools_count.toString()
+        auditPercent = Math.round(audit.savings_percentage).toString()
+      }
+    } catch (e) {
+      console.error('Failed to load audit for OG:', e)
+    }
+  }
 
   return new ImageResponse(
     (
@@ -105,7 +125,7 @@ export async function GET(request: NextRequest) {
                 color: '#059669',
               }}
             >
-              ${savings}
+              ${auditSavings}
             </span>
             <span
               style={{
@@ -128,18 +148,7 @@ export async function GET(request: NextRequest) {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <span style={{ fontWeight: '600' }}>${annual}</span>
-              <span style={{ marginLeft: '6px' }}>/year potential</span>
-            </div>
-            <div
-              style={{
-                width: '1px',
-                height: '24px',
-                backgroundColor: '#e2e8f0',
-              }}
-            />
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <span style={{ fontWeight: '600' }}>{tools}</span>
+              <span style={{ fontWeight: '600' }}>{auditTools}</span>
               <span style={{ marginLeft: '6px' }}>tools analyzed</span>
             </div>
             <div
@@ -150,7 +159,7 @@ export async function GET(request: NextRequest) {
               }}
             />
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <span style={{ fontWeight: '600' }}>{percent}%</span>
+              <span style={{ fontWeight: '600' }}>{auditPercent}%</span>
               <span style={{ marginLeft: '6px' }}>reduction</span>
             </div>
           </div>
@@ -163,7 +172,7 @@ export async function GET(request: NextRequest) {
             color: '#64748b',
           }}
         >
-          cutmyai.vercel.app - Free AI Spend Audit
+          Credex AI Spend Audit - Free Analysis
         </div>
       </div>
     ),

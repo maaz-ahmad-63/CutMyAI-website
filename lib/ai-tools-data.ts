@@ -52,15 +52,14 @@ export const AI_TOOLS: AITool[] = [
     name: 'ChatGPT',
     category: 'llm',
     plans: [
-      { name: 'Free', monthlyPrice: 0, features: ['GPT-3.5', 'Limited messages'] },
-      { name: 'Plus', monthlyPrice: 20, features: ['GPT-4', 'DALL-E', 'Plugins'] },
-      { name: 'Team', monthlyPrice: 30, features: ['Admin controls', 'Higher limits'] },
-      { name: 'Enterprise', monthlyPrice: 60, features: ['Custom deployment', 'SSO'] },
-      { name: 'API Direct', monthlyPrice: 0, features: ['Pay-as-you-go', 'GPT-4'] },
+      { name: 'Free', monthlyPrice: 0, features: ['GPT-3.5', 'Limited messages (4/3 hours)'] },
+      { name: 'Plus', monthlyPrice: 20, features: ['GPT-4', 'DALL-E', 'Web browsing'] },
+      { name: 'Team', monthlyPrice: 30, features: ['Admin controls', 'Higher limits', 'Shared workspace'] },
+      { name: 'Enterprise', monthlyPrice: 60, features: ['Custom deployment', 'SSO', 'Unlimited users'] },
     ],
     alternatives: [
       { toolId: 'claude', savingsPercent: 0, reason: 'Better for long-form writing and analysis' },
-      { toolId: 'gemini', savingsPercent: 100, reason: 'Free tier is very capable for most tasks' },
+      { toolId: 'gemini', savingsPercent: 0, reason: 'Similar capabilities, both $20/month for Pro tier' },
     ],
   },
   {
@@ -68,12 +67,11 @@ export const AI_TOOLS: AITool[] = [
     name: 'Claude',
     category: 'llm',
     plans: [
-      { name: 'Free', monthlyPrice: 0, features: ['Claude 3 Sonnet', 'Limited messages'] },
-      { name: 'Pro', monthlyPrice: 20, features: ['Claude 3 Opus', 'Higher limits'] },
-      { name: 'Max', monthlyPrice: 30, features: ['Claude 3 Opus Max', 'Extended context'] },
-      { name: 'Team', monthlyPrice: 30, features: ['Admin controls', 'Artifacts'] },
-      { name: 'Enterprise', monthlyPrice: 60, features: ['Custom deployment'] },
-      { name: 'API Direct', monthlyPrice: 0, features: ['Pay-as-you-go', 'Claude 3'] },
+      { name: 'Free', monthlyPrice: 0, features: ['Claude 3.5 Sonnet', 'Limited messages (50/day)'] },
+      { name: 'Pro', monthlyPrice: 20, features: ['Claude 3.5 Opus', 'File uploads', '200 messages/day'] },
+      { name: 'Max', monthlyPrice: 30, features: ['Claude 3.5 Ultra', 'Extended context', '400 messages/day'] },
+      { name: 'Team', monthlyPrice: 30, features: ['Admin controls', 'Audit logs', 'Shared workspace'] },
+      { name: 'Enterprise', monthlyPrice: 60, features: ['Custom deployment', 'Unlimited users', 'SLA'] },
     ],
   },
   {
@@ -81,10 +79,9 @@ export const AI_TOOLS: AITool[] = [
     name: 'Gemini',
     category: 'llm',
     plans: [
-      { name: 'Free', monthlyPrice: 0, features: ['Gemini Pro', 'Google integration'] },
-      { name: 'Pro', monthlyPrice: 20, features: ['Gemini Pro', 'Higher limits'] },
-      { name: 'Ultra', monthlyPrice: 30, features: ['Gemini Ultra', 'Advanced features'] },
-      { name: 'API', monthlyPrice: 0, features: ['Pay-as-you-go', 'Gemini Pro'] },
+      { name: 'Free', monthlyPrice: 0, features: ['Gemini 1.5 Pro', 'Web search', 'Limited requests'] },
+      { name: 'Pro', monthlyPrice: 20, features: ['Gemini 1.5 Pro', 'Unlimited requests', 'Priority support'] },
+      { name: 'Advanced', monthlyPrice: 30, features: ['Gemini 2.0 Advanced', 'Highest priority', '2M context'] },
     ],
   },
   {
